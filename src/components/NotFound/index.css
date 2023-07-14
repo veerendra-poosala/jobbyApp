@@ -1,0 +1,38 @@
+.not-found-route-bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  background-color: #000000;
+  min-height: 100vh;
+  font-family: 'Roboto';
+  color: #fff;
+  align-items: center;
+  padding: 5%;
+}
+
+.not-found-image {
+  width: 60%;
+}
+.page-not-found-heading {
+  font-size: 20px;
+  line-height: 1.5;
+}
+.page-not-found-description {
+  font-size: 12px;
+  line-height: 1.5;
+}
+@media screen and (min-width: 768px) {
+  .not-found-image {
+    width: 30%;
+  }
+  .page-not-found-heading {
+    font-size: 28px;
+    line-height: 1.5;
+  }
+  .page-not-found-description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

@@ -1,0 +1,347 @@
+.jobs-section-bg-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  background-color: #000000;
+  min-height: 100vh;
+  padding-top: 10px;
+  justify-content: flex-start;
+}
+@media screen and (min-width: 768px) {
+  .jobs-section-bg-container {
+    flex-direction: row;
+    padding-left: 2%;
+    padding-top: 28px;
+    width: 100%;
+    padding-bottom: 2%;
+    padding-right: 2%;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
+.side-nav-bar-section-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+@media screen and (min-width: 768px) {
+  .side-nav-bar-section-container {
+    width: 32%;
+    align-items: center;
+  }
+}
+.all-jobs-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+@media screen and (min-width: 768px) {
+  .all-jobs-section {
+    width: 66%;
+    align-items: flex-start;
+  }
+}
+.profile-container {
+  width: 100%;
+  display: flex;
+  padding: 4%;
+  flex-direction: column;
+  border-radius: 30px;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
+  background-size: cover;
+  min-height: 180px;
+}
+
+.profile-error-container {
+  background-color: transparent;
+  display: flex;
+  padding: 4%;
+  flex-direction: column;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  min-height: 180px;
+}
+
+.profile-container > * {
+  padding: 3px;
+  margin: 3px;
+}
+.profile-image {
+  width: 60px;
+}
+.profile-name {
+  color: #6366f1;
+  font-size: 24px;
+  font-weight: 600;
+}
+.profile-bio {
+  color: #7e858e;
+  font-size: 16px;
+}
+
+.horizonatal-rule {
+  outline: none;
+  height: 1px;
+  border: 1.5px solid #475569;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.logout-button {
+  background-color: #4f46e5;
+  color: #fff;
+  width: 94px;
+  height: 35px;
+  border-radius: 6px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
+}
+
+/* search input */
+
+.show-search-input-small {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.show-search-input-large {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .show-search-input-small {
+    display: none;
+  }
+  .show-search-input-large {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.search-input-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid #475569;
+  margin-bottom: 30px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: transparent;
+}
+.search-input {
+  width: 80%;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  height: 38px;
+  color: #fff;
+  padding-left: 5%;
+  padding-right: 5px;
+  margin-right: 4px;
+  border-radius: 8px;
+}
+/*
+.search-input-container:hover {
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
+}
+*/
+.search-button {
+  width: 35px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/*filters */
+
+.filter-bg-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.filter-heading {
+  color: #dfdfdf;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.filter-options-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 5px;
+  padding-left: 8px;
+}
+.filter-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  list-style-type: none;
+  margin-bottom: 8px;
+}
+.emp-filter-input {
+  height: 20px;
+  width: 20px;
+  margin-right: 15px;
+}
+
+.emp-filter-label {
+  color: #f2f2f2;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* jobs list styles */
+.jobs-list-bg-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.jobs-list-items-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 2px;
+  align-items: flex-start;
+}
+
+.jobs-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #272727;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 2%;
+  color: #dfdfdf;
+}
+
+.jobs-item-container:hover {
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
+}
+
+.job-item-header-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.job-item-logo-section-container {
+  display: flex;
+  align-items: center;
+}
+
+.job-item-company-log {
+  width: 70px;
+  height: 70px;
+  margin-right: 14px;
+}
+.job-item-title-container {
+  display: flex;
+  flex-direction: column;
+}
+.job-item-title-container > * {
+  padding: 2px;
+  margin: 2px;
+}
+.job-item-title {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+}
+.job-item-rating-container {
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: auto;
+  margin-top: 4px;
+}
+.job-item-title-container > * {
+  padding: 2px;
+  margin: 2px;
+}
+.rating-star {
+  color: #fbbf24;
+  font-size: 20px;
+  margin-right: 8px;
+}
+.job-item-rating {
+  font-size: 16px;
+}
+
+.job-item-location-type-package-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 16px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  height: 30px;
+}
+
+.job-item-sec-rule {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.job-item-location-type-container {
+  display: flex;
+  align-items: center;
+}
+.jot-item-loacation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+.location-text {
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.job-item-description-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.job-item-description-container > * {
+  padding: 2px;
+  margin: 2px;
+}
+.job-item-description-heading {
+  font-size: 22px;
+  font-weight: 500;
+}
+.job-item-description-text {
+  font-size: 16px;
+  line-height: 1.5;
+}

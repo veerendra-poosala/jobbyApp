@@ -1,0 +1,75 @@
+.jobby-app-home-bg-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Roboto';
+  color: #fff;
+  padding: 1%;
+  padding-top: 3%;
+  justify-content: flex-start;
+  background-size: cover;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/home-sm-bg.png');
+}
+@media screen and (min-width: 768px) {
+  .jobby-app-home-bg-container {
+    padding: 10%;
+    background-size: cover;
+    background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
+  }
+}
+
+.home-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding-left: 10px;
+}
+.home-heading {
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.home-description {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+  .home-content-container {
+    width: 60%;
+  }
+  .home-heading {
+    font-size: 34px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+  .home-description {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+}
+
+.logout-button {
+  background-color: #4f46e5;
+  color: #fff;
+  width: 94px;
+  height: 35px;
+  border-radius: 6px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0px 4px 16px 0px #bfbfbf;
+}
