@@ -45,13 +45,13 @@ class Login extends Component {
       }
       const response = await fetch(url, options)
       const data = await response.json()
-      console.log('data', data)
-      if (data.status_code === 400) {
-        this.setState({errorMsg: data.error_msg, showErrorMsg: true})
-      }
+      // console.log('data', data)
+
       if (data?.jwt_token !== undefined) {
-        this.setState({showErrorMsg: false})
+        this.setState({showErrorMsg: false, errorMsg: ''})
         this.onSuccessfulSubmission(data?.jwt_token)
+      } else {
+        this.setState({errorMsg: data.error_msg, showErrorMsg: true})
       }
     } catch (e) {
       console.log(('fetch error': e))

@@ -233,14 +233,14 @@
 }
 
 .jobs-item-container {
-  width: 100%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   background-color: #272727;
   border-radius: 8px;
   margin-bottom: 16px;
   padding: 2%;
-  color: #dfdfdf;
+  color: #f8fafc;
 }
 
 .jobs-item-container:hover {
@@ -251,10 +251,22 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 230px;
+}
+.job-item-header-section > * {
+  padding: 3px;
+  border: 3px;
+}
+
+@media screen and (min-width: 768px) {
+  .job-item-header-section {
+    height: auto;
+  }
 }
 
 .job-item-logo-section-container {
   display: flex;
+
   align-items: center;
 }
 
@@ -268,11 +280,11 @@
   flex-direction: column;
 }
 .job-item-title-container > * {
-  padding: 2px;
-  margin: 2px;
+  padding: 4px;
+  margin: 4px;
 }
 .job-item-title {
-  color: #fff;
+  color: #f2f2f2;
   font-size: 22px;
   font-weight: 500;
 }
@@ -284,8 +296,8 @@
   margin-top: 4px;
 }
 .job-item-title-container > * {
-  padding: 2px;
-  margin: 2px;
+  padding: 4px;
+  margin: 4px;
 }
 .rating-star {
   color: #fbbf24;
@@ -298,24 +310,32 @@
 
 .job-item-location-type-package-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
 
   margin-top: 16px;
   margin-bottom: 0px;
   padding-bottom: 0px;
-  height: 30px;
 }
-
+@media screen and (min-width: 768px) {
+  .job-item-location-type-package-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+}
 .job-item-sec-rule {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .job-item-location-type-container {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .jot-item-loacation-container {
   display: flex;
@@ -337,6 +357,7 @@
   padding: 2px;
   margin: 2px;
 }
+
 .job-item-description-heading {
   font-size: 22px;
   font-weight: 500;
@@ -344,4 +365,42 @@
 .job-item-description-text {
   font-size: 16px;
   line-height: 1.5;
+}
+
+/* no jobs styles */
+
+.no-jobs-list-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  color: #f2f2f2;
+}
+
+.no-jobs-image {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .no-jobs-image {
+    width: 50%;
+  }
+}
+.no-jobs-found-heading {
+  font-size: 24px;
+}
+@media screen and (min-width: 768px) {
+  .no-jobs-found-heading {
+    font-size: 32px;
+  }
+}
+.no-jobs-found-description {
+  font-size: 18px;
+}
+.loader-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

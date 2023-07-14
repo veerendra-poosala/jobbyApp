@@ -65,6 +65,7 @@ class Jobs extends Component {
       minimumPackage: '',
       searchInput: '',
       jobsList: [],
+      showJobsFetchError: false,
     }
   }
 
@@ -185,13 +186,22 @@ class Jobs extends Component {
           jobsList: [...modifiedJobsList],
           isLoading: false,
           apiStatus: apiStatusConstants.success,
+          showJobsFetchError: false,
         })
       } else if (response.status === 400) {
         // console.log('status failure')
-        this.setState({apiStatus: apiStatusConstants.failure, isLoading: false})
+        this.setState({
+          apiStatus: apiStatusConstants.failure,
+          showJobsFetchError: true,
+          isLoading: false,
+        })
       }
     } catch (e) {
-      this.setState({apiStatus: apiStatusConstants.failure, isLoading: false})
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
+        showJobsFetchError: true,
+        isLoading: false,
+      })
       console.log('fetch error profile details', e)
     } finally {
       this.setState({isLoading: false})
@@ -234,7 +244,7 @@ class Jobs extends Component {
       this.renderLoader()
     ) : (
       <div className="profile-container">
-        <img className="profile-image" alt="" src={profileImageUrl} />
+        <img className="profile-image" alt="profile" src={profileImageUrl} />
         <h1 className="profile-name">{name}</h1>
         <p className="profile-bio">{shortBio}</p>
       </div>
@@ -258,6 +268,7 @@ class Jobs extends Component {
           type="button"
           className="search-button"
           onClick={this.applySearchFilter}
+          data-testid="searchButton"
         >
           <BsSearch color="#dfdfdf" size={38} />
         </button>
@@ -265,41 +276,40 @@ class Jobs extends Component {
     )
   }
 
-  renderEmployementTypeFilter = () => {
-    const {employementType} = this.state
-    // console.log('employement type', employementType)
-    return (
-      <div className="filter-bg-container">
-        <h1 className="filter-heading">Type Of Employement</h1>
+  // const {employementType} = this.state
+  // console.log('employement type', employementType)
 
-        <ul className="filter-options-list">
-          {employmentTypesList.map(eachEmpType => (
-            <li key={eachEmpType.employmentTypeId} className="filter-option">
-              <input
-                type="checkbox"
-                className="emp-filter-input"
-                id={eachEmpType.employmentTypeId}
-                onClick={this.updateEmpTypeFilter}
-              />
-              <label
-                className="emp-filter-label"
-                htmlFor={eachEmpType.employmentTypeId}
-              >
-                {eachEmpType.label}
-              </label>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
+  renderEmployementTypeFilter = () => (
+    <div className="filter-bg-container">
+      <h1 className="filter-heading">Type of Employment</h1>
+
+      <ul className="filter-options-list">
+        {employmentTypesList.map(eachEmpType => (
+          <li key={eachEmpType.employmentTypeId} className="filter-option">
+            <input
+              type="checkbox"
+              className="emp-filter-input"
+              id={eachEmpType.employmentTypeId}
+              onClick={this.updateEmpTypeFilter}
+            />
+            <label
+              className="emp-filter-label"
+              htmlFor={eachEmpType.employmentTypeId}
+            >
+              {eachEmpType.label}
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 
   renderSalaryRangesFilter = () => {
     const {minimumPackage} = this.state
     // console.log('min package', minimumPackage)
     return (
       <div className="filter-bg-container">
-        <h1 className="filter-heading">Salary Of Range</h1>
+        <h1 className="filter-heading">Salary Range</h1>
 
         <ul className="filter-options-list">
           {salaryRangesList?.map(eachSalRange => (
@@ -328,7 +338,9 @@ class Jobs extends Component {
   renderJobsList = () => {
     const {jobsList} = this.state
     // console.log(jobsList)
-    return (
+    return jobsList?.length === 0 ? (
+      this.renderNoJobsView()
+    ) : (
       <div className="jobs-list-bg-container">
         <ul className="jobs-list-items-container">
           {jobsList.map(job => (
@@ -368,7 +380,6 @@ class Jobs extends Component {
                     </div>
                   </div>
                 </div>
-
                 <hr className="horizonatal-rule job-item-sec-rule" />
                 <div className="job-item-description-container">
                   <h1 className="job-item-description-heading">Description</h1>
@@ -384,8 +395,74 @@ class Jobs extends Component {
     )
   }
 
-  render() {
-    // console.log(this.props)
+  renderNoJobsView = () => {
+    const {jobsList} = this.state
+    return (
+      jobsList?.length === 0 && (
+        <div className="no-jobs-list-container">
+          <img
+            className="no-jobs-image"
+            alt="no jobs"
+            src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+          />
+          <h1 className="no-jobs-found-heading">No Jobs Found</h1>
+          <p className="no-jobs-found-description">
+            We could not find any jobs. Try other filters
+          </p>
+        </div>
+      )
+    )
+  }
+
+  renderFailureView = () => {
+    const {showJobsFetchError} = this.state
+    return (
+      showJobsFetchError === true && (
+        <div className="jobs-section-bg-container">
+          <div className="side-nav-bar-section-container">
+            <div className="show-search-input-small">
+              {this.renderSearchBar()}
+            </div>
+            {this.renderProfileDetails()}
+
+            <hr className="horizonatal-rule" />
+            {this.renderEmployementTypeFilter()}
+            <hr className="horizonatal-rule" />
+            {this.renderSalaryRangesFilter()}
+          </div>
+          <div className="all-jobs-section">
+            <div className="show-search-input-large">
+              {this.renderSearchBar()}
+            </div>
+
+            <div className="no-jobs-list-container">
+              <img
+                className="no-jobs-image"
+                alt="failure view"
+                src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+              />
+              <h1 className="no-jobs-found-heading">
+                Oops! Something Went Wrong
+              </h1>
+              <p className="no-jobs-found-description">
+                We cannot seem to find the page you are looking for
+              </p>
+              <button
+                type="button"
+                className="logout-button button"
+                onClick={this.getJobsList}
+              >
+                Retry
+              </button>
+            </div>
+          </div>
+        </div>
+      )
+    )
+  }
+
+  renderInprogressView = () => {
+    const {isLoading} = this.state
     return (
       <div className="jobs-section-bg-container">
         <div className="side-nav-bar-section-container">
@@ -403,10 +480,44 @@ class Jobs extends Component {
           <div className="show-search-input-large">
             {this.renderSearchBar()}
           </div>
-          {this.renderJobsList()}
+          {isLoading === true && this.renderLoader()}
         </div>
       </div>
     )
+  }
+
+  renderSuccessView = () => (
+    <div className="jobs-section-bg-container">
+      <div className="side-nav-bar-section-container">
+        <div className="show-search-input-small">{this.renderSearchBar()}</div>
+        {this.renderProfileDetails()}
+
+        <hr className="horizonatal-rule" />
+        {this.renderEmployementTypeFilter()}
+        <hr className="horizonatal-rule" />
+        {this.renderSalaryRangesFilter()}
+      </div>
+      <div className="all-jobs-section">
+        <div className="show-search-input-large">{this.renderSearchBar()}</div>
+        {this.renderJobsList()}
+      </div>
+    </div>
+  )
+
+  render() {
+    // console.log(this.props)
+    const {apiStatus} = this.state
+
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+      case apiStatusConstants.inProgress:
+        return this.renderInprogressView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      default:
+        return null
+    }
   }
 }
 

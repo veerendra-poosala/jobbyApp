@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 import './index.css'
 
 const Home = props => {
@@ -14,13 +15,11 @@ const Home = props => {
           Millions of people are searching for jobs, salary information, company
           reviews. Find the job that fits your abilities and potential{' '}
         </p>
-        <button
-          className="button logout-button"
-          type="button"
-          onClick={getFindJobs}
-        >
-          Find Jobs
-        </button>
+        <Link to="/jobs">
+          <button className="button logout-button" type="button">
+            Find Jobs
+          </button>
+        </Link>
       </div>
     </div>
   )
